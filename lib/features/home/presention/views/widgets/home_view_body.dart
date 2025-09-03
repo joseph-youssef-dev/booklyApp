@@ -1,4 +1,6 @@
+import 'package:bookly/core/constants/app_fonts.dart';
 import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/features/home/presention/views/widgets/best_seller_list_view_item.dart';
 import 'package:bookly/features/home/presention/views/widgets/custom_app_bar.dart';
 import 'package:bookly/features/home/presention/views/widgets/featured_book_list_view.dart';
 import 'package:flutter/material.dart';
@@ -13,10 +15,14 @@ class HomeViewBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomAppBar(),
-          FeaturedBookListView(),
-          SizedBox(height: 35),
-          Text("Best Seller", style: Styles.titleMedium),
+          const CustomAppBar(),
+          const FeaturedBookListView(),
+          const SizedBox(height: 35),
+          Text(
+            "Best Seller",
+            style: Styles.textStyle24.copyWith(fontFamily: kGtSectraFine),
+          ),
+          const BestSellerListViewItem(),
         ],
       ),
     );
