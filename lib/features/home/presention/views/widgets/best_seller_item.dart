@@ -1,59 +1,66 @@
+import 'package:bookly/core/utils/app_router.dart';
 import 'package:bookly/core/utils/assets_data.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class BestSellerItem extends StatelessWidget {
   const BestSellerItem({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 140,
-      child: Row(
-        children: [
-          AspectRatio(
-            aspectRatio: 2.6 / 4,
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                image: const DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage(AssetsData.testImage),
+    return GestureDetector(
+      onTap: () {
+        GoRouter.of(context).push(AppRouter.kBookDetailsView);
+      },
+      child: SizedBox(
+        height: 140,
+        child: Row(
+          children: [
+            AspectRatio(
+              aspectRatio: 2.6 / 4,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  image: const DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage(AssetsData.testImage),
+                  ),
                 ),
               ),
             ),
-          ),
-          const SizedBox(width: 30),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.6,
-                  child: Text(
-                    "Harry Potter and the Goblet of Fire ",
-                    style: Styles.textStyle26,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-                Text("J.K. Rowling", style: Styles.textStyle20),
-                Row(
-                  children: [
-                    Text(
-                      "19,99 \$",
-                      style: Styles.textStyle20.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+            const SizedBox(width: 30),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.6,
+                    child: Text(
+                      "Harry Potter and the Goblet of Fire ",
+                      style: Styles.textStyle26,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    const SizedBox(width: 80),
-                    const BookRating(),
-                  ],
-                ),
-              ],
+                  ),
+                  Text("J.K. Rowling", style: Styles.textStyle20),
+                  Row(
+                    children: [
+                      Text(
+                        "19,99 \$",
+                        style: Styles.textStyle20.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(width: 80),
+                      const BookRating(),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
