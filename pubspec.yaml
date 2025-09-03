@@ -31,7 +31,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter
-  get: ^4.7.2
+  go_router: ^16.2.1
   google_fonts: ^6.3.1
 
 dev_dependencies:
@@ -64,7 +64,6 @@ flutter:
     - family: GT Sectra Fine
       fonts:
         - asset: assets/fonts/GT-Sectra-Fine-Medium.ttf
-        
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf
