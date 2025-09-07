@@ -1,3 +1,4 @@
+import 'package:bookly/core/constants/app_fonts.dart';
 import 'package:bookly/core/utils/app_router.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/features/home/data/models/book_model/book_model.dart';
@@ -16,11 +17,11 @@ class BestSellerItem extends StatelessWidget {
         GoRouter.of(context).push(AppRouter.kBookDetailsView);
       },
       child: SizedBox(
-        height: 140,
+        height: 120,
         child: Row(
           children: [
             CustomBookImageItem(
-              imageUrl: bookModel.volumeInfo.imageLinks.thumbnail,
+              imageUrl: bookModel.volumeInfo.imageLinks?.thumbnail ?? "",
             ),
             const SizedBox(width: 30),
             Expanded(
@@ -31,20 +32,23 @@ class BestSellerItem extends StatelessWidget {
                     width: MediaQuery.of(context).size.width * 0.6,
                     child: Text(
                       bookModel.volumeInfo.title!,
-                      style: Styles.textStyle26,
+                      style: Styles.textStyle22.copyWith(
+                        fontFamily: kGtSectraFine,
+                      ),
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
                   Text(
                     bookModel.volumeInfo.authors![0],
-                    style: Styles.textStyle20,
+                    style: Styles.textStyle16,
+                    overflow: TextOverflow.ellipsis,
                   ),
                   Row(
                     children: [
                       Text(
                         "Free",
-                        style: Styles.textStyle20.copyWith(
+                        style: Styles.textStyle16.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -86,7 +90,7 @@ class BookRating extends StatelessWidget {
         const SizedBox(width: 6.3),
         Text(
           "$rating",
-          style: Styles.textStyle20.copyWith(fontWeight: FontWeight.w600),
+          style: Styles.textStyle16.copyWith(fontWeight: FontWeight.w600),
         ),
         const SizedBox(width: 5),
         Text(
