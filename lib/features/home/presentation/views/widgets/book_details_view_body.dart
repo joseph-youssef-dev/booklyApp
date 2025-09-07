@@ -28,15 +28,14 @@ class BookDetailsViewBody extends StatelessWidget {
                   child: SizedBox(),
                   //TODO
                   /*
-                    AspectRatio(
-                      aspectRatio: 2.8 / 4,
-                       child: Container(
-                          decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(imageUrl),
-                          ),
+                    ClipRRect(
+                      borderRadius: BorderRadiusGeometry.circular(16),
+                      child: AspectRatio(
+                        aspectRatio: 2.8 / 4,
+                        child: CachedNetworkImage(
+                          fit: BoxFit.cover,
+                          imageUrl: imageUrl,
+                          errorWidget: (context, url, error) => Icon(Icons.error),
                         ),
                       ),
                     ),
