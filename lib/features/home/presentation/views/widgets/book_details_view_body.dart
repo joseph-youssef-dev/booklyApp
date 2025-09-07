@@ -28,17 +28,7 @@ class BookDetailsViewBody extends StatelessWidget {
                   child: SizedBox(),
                   //TODO
                   /*
-                    ClipRRect(
-                      borderRadius: BorderRadiusGeometry.circular(16),
-                      child: AspectRatio(
-                        aspectRatio: 2.8 / 4,
-                        child: CachedNetworkImage(
-                          fit: BoxFit.cover,
-                          imageUrl: imageUrl,
-                          errorWidget: (context, url, error) => Icon(Icons.error),
-                        ),
-                      ),
-                    ),
+                    CustomBookImageItem(),
                   */
                 ),
                 const SizedBox(height: 25),
@@ -54,7 +44,7 @@ class BookDetailsViewBody extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 15),
-                const BookRating(mainAxisAlignment: MainAxisAlignment.center),
+                // BookRating(mainAxisAlignment: MainAxisAlignment.center),
                 const SizedBox(height: 15),
                 const BookActions(),
                 const Expanded(child: SizedBox(height: 50)),

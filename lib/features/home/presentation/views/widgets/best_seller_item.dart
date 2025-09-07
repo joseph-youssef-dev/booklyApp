@@ -1,12 +1,14 @@
 import 'package:bookly/core/utils/app_router.dart';
-import 'package:bookly/core/utils/assets_data.dart';
 import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/features/home/data/models/book_model/book_model.dart';
+import 'package:bookly/features/home/presentation/views/widgets/custom_book_image_item.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BestSellerItem extends StatelessWidget {
-  const BestSellerItem({super.key});
+  const BestSellerItem({super.key, required this.bookModel});
 
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -17,17 +19,8 @@ class BestSellerItem extends StatelessWidget {
         height: 140,
         child: Row(
           children: [
-            AspectRatio(
-              aspectRatio: 2.6 / 4,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  image: const DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage(AssetsData.testImage),
-                  ),
-                ),
-              ),
+            CustomBookImageItem(
+              imageUrl: bookModel.volumeInfo.imageLinks.thumbnail,
             ),
             const SizedBox(width: 30),
             Expanded(
@@ -37,23 +30,29 @@ class BestSellerItem extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.6,
                     child: Text(
-                      "Harry Potter and the Goblet of Fire ",
+                      bookModel.volumeInfo.title!,
                       style: Styles.textStyle26,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  Text("J.K. Rowling", style: Styles.textStyle20),
+                  Text(
+                    bookModel.volumeInfo.authors![0],
+                    style: Styles.textStyle20,
+                  ),
                   Row(
                     children: [
                       Text(
-                        "19,99 \$",
+                        "Free",
                         style: Styles.textStyle20.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       const SizedBox(width: 80),
-                      const BookRating(),
+                      BookRating(
+                        rating: bookModel.volumeInfo.averageRating ?? 0,
+                        count: bookModel.volumeInfo.ratingsCount ?? 0,
+                      ),
                     ],
                   ),
                 ],
@@ -70,7 +69,12 @@ class BookRating extends StatelessWidget {
   const BookRating({
     super.key,
     this.mainAxisAlignment = MainAxisAlignment.start,
+    required this.rating,
+    required this.count,
   });
+
+  final double rating;
+  final int count;
 
   final MainAxisAlignment mainAxisAlignment;
   @override
@@ -81,12 +85,12 @@ class BookRating extends StatelessWidget {
         const Icon(Icons.star, color: Colors.amber),
         const SizedBox(width: 6.3),
         Text(
-          "4.8",
+          "$rating",
           style: Styles.textStyle20.copyWith(fontWeight: FontWeight.w600),
         ),
         const SizedBox(width: 5),
         Text(
-          "(245)",
+          "($count)",
           style: Styles.textStyle16.copyWith(color: const Color(0xff888590)),
         ),
       ],
