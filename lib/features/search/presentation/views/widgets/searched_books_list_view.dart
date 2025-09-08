@@ -1,4 +1,3 @@
-import 'package:bookly/features/home/presentation/views/widgets/newest_books_item.dart';
 import 'package:flutter/cupertino.dart';
 
 class SearchedBooksListView extends StatelessWidget {
