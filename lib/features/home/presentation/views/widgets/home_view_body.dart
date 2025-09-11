@@ -21,6 +21,11 @@ class HomeViewBody extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 22),
                 child: const CustomAppBar(),
               ),
+              //TODO const booksGeneras()
+              /*
+              general / 
+              business , programming , science , history , fiction , mystry , self-help
+              */
               const FeaturedBookListView(),
               const SizedBox(height: 35),
               Padding(
