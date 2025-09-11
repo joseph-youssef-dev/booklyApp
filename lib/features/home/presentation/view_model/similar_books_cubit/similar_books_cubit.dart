@@ -20,7 +20,9 @@ class SimilarBooksCubit extends Cubit<SimilarBooksState> {
         emit(SimilarBooksFailure(failure.errMessage));
       },
       (books) {
-        emit(SimilarBooksSuccess(books));
+        if (!isClosed) {
+          emit(SimilarBooksSuccess(books));
+        }
       },
     );
   }
