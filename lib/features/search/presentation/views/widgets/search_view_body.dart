@@ -14,7 +14,7 @@ class SearchViewBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomSearchTextField(),
+          CustomSearchTextField(searchController: TextEditingController()),
           SizedBox(height: 20),
           Text(
             "Search Result",

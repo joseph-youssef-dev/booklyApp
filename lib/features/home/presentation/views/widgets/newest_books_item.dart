@@ -17,7 +17,7 @@ class NewestBooksItem extends StatelessWidget {
         GoRouter.of(context).push(AppRouter.kBookDetailsView, extra: bookModel);
       },
       child: SizedBox(
-        height: 120,
+        height: 130,
         child: Row(
           children: [
             CustomBookImageItem(
@@ -40,7 +40,7 @@ class NewestBooksItem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    bookModel.volumeInfo.authors![0],
+                    bookModel.volumeInfo.authors?[0] ?? "",
                     style: Styles.textStyle16,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -52,7 +52,7 @@ class NewestBooksItem extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(width: 80),
+                      const SizedBox(width: 70),
                       BookRating(
                         rating: bookModel.volumeInfo.averageRating ?? 0,
                         count: bookModel.volumeInfo.ratingsCount ?? 0,
